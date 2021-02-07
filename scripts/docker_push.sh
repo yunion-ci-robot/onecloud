@@ -57,6 +57,9 @@ build_bin() {
         host-deployer)
             env $BUILD_ARCH $BUILD_CGO make -C "$SRC_DIR" docker-centos-build F="cmd/$1"
             ;;
+        host)
+            env SHELL='sh -x' $BUILD_ARCH $BUILD_CGO make -C "$SRC_DIR" docker-alpine-build F="cmd/$1"
+            ;;
         *)
             env $BUILD_ARCH $BUILD_CGO make -C "$SRC_DIR" docker-alpine-build F="cmd/$1"
             ;;
